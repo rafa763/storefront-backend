@@ -70,7 +70,7 @@ prod.delete('/', verifyToken, async (req: ModRequest, res: Response) => {
     try {
         const id = req.body.id 
         if(!req.userId) {
-            res.status(401).json({ error: 'No token provided'})
+            return res.status(401).json({ error: 'No token provided'})
         }
         const delProduct = await product.delete(Number(id))
         res.status(200).send(delProduct)

@@ -68,9 +68,9 @@ user.put('/', verifyToken, async (req: ModRequest, res: Response) => {
             res.status(400).json({ error: 'body is required'})
         }
         const { id, username, first_name, last_name, password, role } = req.body
-        // console.log(id, req.userId)
+        console.log(id, req.userId)
         console.log(req.body)
-        if(Number(id) !== req.userId) {
+        if(Number(id) !== Number(req.userId)) {
             return res.status(401).json({ error: 'Unauthorized' })
         }
         const updatedUsr: User = { id, username, first_name, last_name, password, role }
