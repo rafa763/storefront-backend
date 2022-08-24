@@ -12,7 +12,7 @@ export type User = {
     first_name: string;
     last_name: string;
     password: string;
-    role: string;
+    role?: string;
 }
 
 export class UserModel {
@@ -59,34 +59,36 @@ export class UserModel {
             let queryParams = '';
             let passedCount = 1;
             let passedData = [];
+            passedData.push(u.id);
             if(u.username && u.username !== undefined){
                 passedCount++; 
-                queryParams += `username=${passedCount},`; 
+                queryParams += `username=$${passedCount},`; 
                 passedData.push(u.username)
             }
             if(u.first_name && u.first_name !== undefined){
                 passedCount++; 
-                queryParams += `first_name=${passedCount},`; 
+                queryParams += `first_name=$${passedCount},`; 
                 passedData.push(u.first_name)
             }
             if(u.last_name && u.last_name !== undefined){
                 passedCount++; 
-                queryParams += `last_name=${passedCount},`; 
+                queryParams += `last_name=$${passedCount},`; 
                 passedData.push(u.last_name)
             }
             if(u.password && u.password !== undefined){
                 passedCount++; 
-                queryParams += `hash=${passedCount},`; 
+                queryParams += `hash=$${passedCount},`; 
                 passedData.push(bcrypt.hashSync(u.password+PEPPER, Number(SALT_ROUNDS)))
             }
             if(u.role && u.role !== undefined){
                 passedCount++;
-                queryParams += `role=${passedCount},`;
+                queryParams += `role=$${passedCount},`;
                 passedData.push(u.role)
             }
             const conn = await db.connect()
             const params = String(queryParams).slice(0, -1)
             const sql = `UPDATE users SET ${params} WHERE id=$1 RETURNING *`
+            console.log(passedCount, passedData, sql)
             const updatedUser = await conn.query(sql, passedData)
             return updatedUser.rows[0]
         } catch(err) {

@@ -1,0 +1,148 @@
+########################
+    USERS
+########################
+// User index request 
+GET http://127.0.0.1:3000/api/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE3LCJ1c2VybmFtZSI6InJhZmEyIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2NjEzMjk0NDJ9.5psUv625Mz00Kijrze1Tj2iRyVmCUIhxMUJLaOrjkAU
+
+###
+
+// User create request
+POST http://127.0.0.1:3000/api/users
+Content-Type: application/json
+
+{
+    "username": "rtq01",
+    "first_name": "mohamed",
+    "last_name": "raafat",
+    "password": "testcd123"
+}
+
+###
+
+// User show request
+GET http://127.0.0.1:3000/api/users/18
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE2LCJ1c2VybmFtZSI6InJhZmEiLCJyb2xlIjoidXNlciIsImlhdCI6MTY2MTMyODkzN30.9zYlxeatf0N6qQjQiEQ4tSA-2tnoQMoLPrhHh-2C0OY
+
+###
+
+// User update request
+PUT http://127.0.0.1:3000/api/users
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIxLCJ1c2VybmFtZSI6InJ0cTAiLCJyb2xlIjoidXNlciIsImlhdCI6MTY2MTMzMzE0MH0.--UFNnE0k4YXAHV6v6eZUX8X0mPJXSbMDNEvSk2Ozrc
+
+{
+    "id": 21,
+    "role": "admin"
+}
+
+###
+
+// User delete route
+DELETE http://127.0.0.1:3000/api/users
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIxLCJ1c2VybmFtZSI6InJ0cTAiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NjEzMzMxNjZ9.PGUkXTQU08AUG3BSFAF62SIPrCPnFFYHQiWvbH_Lwws
+
+{
+    "id": 4
+}
+
+######################################
+    Products
+######################################
+
+// Products create route
+POST http://127.0.0.1:3000/api/products
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIxLCJ1c2VybmFtZSI6InJ0cTAiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NjEzMzMxNjZ9.PGUkXTQU08AUG3BSFAF62SIPrCPnFFYHQiWvbH_Lwws
+
+{
+    "name": "ipad",
+    "price": "20000",
+    "category": "electronics",
+    "quantity": 23
+}
+
+###
+
+// Product index route
+GET http://127.0.0.1:3000/api/products
+
+###
+
+// Product show route
+GET http://127.0.0.1:3000/api/products/1
+
+###
+
+// Product update route
+PUT http://127.0.0.1:3000/api/products
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIxLCJ1c2VybmFtZSI6InJ0cTAiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NjEzMzMxNjZ9.PGUkXTQU08AUG3BSFAF62SIPrCPnFFYHQiWvbH_Lwws
+
+{
+    "id": 1,
+    "name": "iphoneX",
+    "price": 200004
+}
+
+###
+
+// Product delete route
+DELETE http://127.0.0.1:3000/api/products
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIxLCJ1c2VybmFtZSI6InJ0cTAiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NjEzMzMxNjZ9.PGUkXTQU08AUG3BSFAF62SIPrCPnFFYHQiWvbH_Lwws
+
+{
+    "id": 6
+}
+
+###################
+    orders
+##################
+
+// create order
+POST http://127.0.0.1:3000/api/orders
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInVzZXJuYW1lIjoicnRxMDEiLCJyb2xlIjoidXNlciIsImlhdCI6MTY2MTM1MzY0N30.db-UYe92oiGJLC6EgQi-JYz__FQGcnIfAclx7H5ti38
+
+{
+    "user_id": 2,
+    "status": "active"
+}
+
+###
+
+// add product to order
+POST http://127.0.0.1:3000/api/orders/5/products
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoicnRxMCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYxMzUzMjgyfQ.0igQklZa7Q6RCq97JyqeQeYLZKJG8sSQfK9-1-bDYJk
+
+{
+    "product_id": 5
+}
+
+###
+
+// get all products in an order
+GET http://127.0.0.1:3000/api/orders/2/products
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoicnRxMCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYxMzUzMjgyfQ.0igQklZa7Q6RCq97JyqeQeYLZKJG8sSQfK9-1-bDYJk
+
+###
+
+// get only active products in an order
+GET http://127.0.0.1:3000/api/orders/2/active_products
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoicnRxMCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYxMzUzMjgyfQ.0igQklZa7Q6RCq97JyqeQeYLZKJG8sSQfK9-1-bDYJk
+
+###
+
+// mark order as completed
+post http://127.0.0.1:3000/api/orders/2/complete
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoicnRxMCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYxMzUzMjgyfQ.0igQklZa7Q6RCq97JyqeQeYLZKJG8sSQfK9-1-bDYJk
+
+{
+    "order_id": 5
+}

@@ -6,6 +6,7 @@ export type Product = {
     price: number;
     category?: string;
     quantity: number;
+    createdBy?: number;
 }
 
 export class ProductModel {
@@ -63,24 +64,25 @@ export class ProductModel {
             let queryParams = '';
             let passedCount = 1;
             let passedData = [];
+            passedData.push(p.id)
             if(p.name && p.name !== undefined) {
                 passedCount++;
-                queryParams += `name=${passedCount},`;
+                queryParams += `name=$${passedCount},`;
                 passedData.push(p.name);
             }
             if(p.price && p.price !== undefined) {
                 passedCount++;
-                queryParams += `price=${passedCount},`;
+                queryParams += `price=$${passedCount},`;
                 passedData.push(p.price);
             }
             if(p.category && p.category !== undefined) {
                 passedCount++;
-                queryParams += `category=${passedCount},`;
+                queryParams += `category=$${passedCount},`;
                 passedData.push(p.category);
             }
             if(p.quantity && p.quantity !== undefined) {
                 passedCount++;
-                queryParams += `quantity=${passedCount},`;
+                queryParams += `quantity=$${passedCount},`;
                 passedData.push(p.quantity);
             }
             const conn = await db.connect()

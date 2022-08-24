@@ -3,6 +3,5 @@ CREATE TABLE IF NOT EXISTS products (
     name VARCHAR(100) NOT NULL,
     price REAL NOT NULL,
     category VARCHAR(100),
-    quantity  INTEGER NOT NUll,
-    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE
+    quantity  INTEGER NOT NUll
 );
