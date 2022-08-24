@@ -29,6 +29,7 @@ describe('Testing endpoint: /products', () => {
         password: '1234'
     }
 
+    const AlteredToken: string = 'eyJhbGciOiJIUzI1NiIsanR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE3LCJ1c2VybmFtZSI6InJhZmEyIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2NjEzMjk0NDJ9.5psUv625Mz00Kijrze1Tj2iRyVmCUIhxMUJLaOrjkAU'
     beforeAll(async () => {
         await request.post('/api/users')
             .send(u)
@@ -69,7 +70,7 @@ describe('Testing endpoint: /products', () => {
         await request
             .post('/api/products')
             .set('Accept', 'application/json')
-            .set('Authorization', `Bearer faketoken123`)
+            .set('Authorization', `Bearer ${AlteredToken}`)
             .send({
                 id: u.id,
                 name: product.name,
@@ -94,6 +95,14 @@ describe('Testing endpoint: /products', () => {
             .get(`/api/products/${prd}`)
             .set('Accept', 'application/json')
             .expect(200);
+    })
+
+    it('Tests the showByCategory endpoint ', async () => {
+        await request
+        .get(`/api/products/category/${cat}`)
+        .set('Accept', 'application/json')
+        .set('Authorization', `Bearer ${token}`)
+        .expect(200);
     })
 
 

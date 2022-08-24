@@ -29,6 +29,18 @@ prod.get('/:id', async (req: Request, res: Response) => {
     }
 })
 
+// showByCategory handler
+prod.get('/category/:category', verifyToken, async (req: Request, res: Response) => {
+    try {
+        const category = req.params.category
+        const cats = await product.showByCategory(category)
+        res.status(200).json(cats)
+    } catch (error) {
+        const e = error as Error
+        res.status(500).json({Error: e.message})
+    }
+})
+
 // create handler
 prod.post('/', verifyToken, async (req: ModRequest, res: Response) => {
     try {

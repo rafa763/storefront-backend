@@ -97,9 +97,16 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIxLCJ1c
     "id": 6
 }
 
-###################
+###
+
+// show by category route
+GET http://127.0.0.1:3000/api/products/category/electronics
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIxLCJ1c2VybmFtZSI6InJ0cTAiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NjEzMzMxNjZ9.PGUkXTQU08AUG3BSFAF62SIPrCPnFFYHQiWvbH_Lwws
+
+##################################
     orders
-##################
+##################################
 
 // create order
 POST http://127.0.0.1:3000/api/orders

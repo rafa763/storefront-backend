@@ -1,0 +1,7 @@
+Copyright © 2022
+
+This code is the property of mohamed raafat and may not be copied or distributed without permission.
+you can fork the code and build on top of it only you consent to make your code open source.
+use at your own risk, i am not responsible for any damage caused by this code.
+
+you can contact me at github.com/rafa763
