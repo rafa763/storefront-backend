@@ -4,12 +4,14 @@
   "description": "image processing api",
   "main": "index.js",
   "scripts": {
-    "build": "npx tsc",
+    "build": "npm run clean && tsc && cp package.json ./build/src/package.json && cp .npmrc ./build/src/.npmrc && cd build/src && zip Archive.zip . -r && cd ../..",
+    "start": "node server.js",
     "dev": "nodemon src/server.ts",
     "jasmine": "jasmine",
     "lint": "eslint src/*.ts",
     "lint:f": "eslint src/**/*.ts --fix",
-    "test": "tsc && set ENV=test&& db-migrate --env test up && jasmine && db-migrate --env test reset"
+    "test": "tsc && set ENV=test&& db-migrate --env test up && jasmine && db-migrate --env test reset",
+    "clean": "rm -rf build"
   },
   "keywords": [],
   "author": "Raafat",

@@ -12,7 +12,7 @@ POST http://127.0.0.1:3000/api/users
 Content-Type: application/json
 
 {
-    "username": "rtq01",
+    "username": "rtfdgdgq01",
     "first_name": "mohamed",
     "last_name": "raafat",
     "password": "testcd123"
