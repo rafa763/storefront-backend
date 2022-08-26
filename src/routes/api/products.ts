@@ -61,13 +61,16 @@ prod.post('/', verifyToken, async (req: ModRequest, res: Response) => {
 })
 
 // update handler
-prod.put('/', verifyToken, async (req: ModRequest, res: Response) => {
+prod.put('/:id', verifyToken, async (req: ModRequest, res: Response) => {
     try {
-        if(!req.userId)
-        {
+        const id = Number(req.params.id)
+        if(!id) {
+            res.status(400).json({ error: 'id required'})
+        }
+        if(!req.userId) {
             res.status(401).json({ error: 'No token provided'})
         }
-        const {id, name, price, category, quantity} = req.body
+        const { name, price, category, quantity} = req.body
         const updProd: Product =  {id, name, price, category, quantity}
         const p = await product.update(updProd)
         res.status(200).json(p)
@@ -78,9 +81,9 @@ prod.put('/', verifyToken, async (req: ModRequest, res: Response) => {
 })
 
 // delete handler
-prod.delete('/', verifyToken, async (req: ModRequest, res: Response) => {
+prod.delete('/:id', verifyToken, async (req: ModRequest, res: Response) => {
     try {
-        const id = req.body.id 
+        const id = Number(req.params.id) 
         if(!req.userId) {
             return res.status(401).json({ error: 'No token provided'})
         }

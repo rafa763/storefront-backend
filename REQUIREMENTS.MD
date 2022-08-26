@@ -6,16 +6,16 @@
 - Show  `/api/products/:id` [GET]
 - Create [token required] `/api/products` [POST]
 - Products by category `/api/products/category/:category` [GET]
-- Update [token required] `/api/products` [PUT]
-- Delete [token required] `/api/products` [DELETE]
+- Update [token required] `/api/products/:id` [PUT]
+- Delete [token required] `/api/products/:id` [DELETE]
 
 #### Users
 
 - Index [token required] `/api/users` [GET]
 - Show [token required] `/api/users/:id` [GET]
 - Create `/api/users` [POST]
-- Update [token required] `/api/users` [PUT]
-- Delete [token required] `/api/users` [DELETE]
+- Update [token required] `/api/users/:id` [PUT]
+- Delete [token required] `/api/users/:id` [DELETE]
 
 #### Orders
 

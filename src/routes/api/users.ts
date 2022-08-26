@@ -62,15 +62,19 @@ user.post('/', async (req: Request, res: Response) => {
 })
 
 // update handler
-user.put('/', verifyToken, async (req: ModRequest, res: Response) => {
+user.put('/:id', verifyToken, async (req: ModRequest, res: Response) => {
     try {
+        const id = Number(req.params.id)
+        if (!id) {
+            res.status(400).json({ error: 'id required' });
+        }
         if(!req.body) {
             res.status(400).json({ error: 'body is required'})
         }
-        const { id, username, first_name, last_name, password, role } = req.body
+        const { username, first_name, last_name, password, role } = req.body
         console.log(id, req.userId)
         console.log(req.body)
-        if(Number(id) !== Number(req.userId)) {
+        if(id !== req.userId) {
             return res.status(401).json({ error: 'Unauthorized' })
         }
         const updatedUsr: User = { id, username, first_name, last_name, password, role }
@@ -88,9 +92,9 @@ user.put('/', verifyToken, async (req: ModRequest, res: Response) => {
 })
 
 // delete handler
-user.delete('/', verifyToken, async (req: ModRequest, res: Response) => {
+user.delete('/:id', verifyToken, async (req: ModRequest, res: Response) => {
     try {
-        const id = req.body.id
+        const id = Number(req.params.id)
         if(!id) {
             return res.status(400).json({ error: 'id required'})
         }
